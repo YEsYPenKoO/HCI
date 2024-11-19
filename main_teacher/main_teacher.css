@@ -1,0 +1,55 @@
+@font-face {
+    font-family: 'Winthorpe Rg';
+    src: url('WinthorpeRg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+.sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 337px;
+    background-color: #E48343;
+}
+.deadlines {
+    position: absolute;
+    left: 384px;
+    top: 257px;
+    height: 680px;
+    width: 654px;
+    background-color: white;
+    overflow: scroll;
+    border-radius: 1px;
+    border-color: black;
+    border-style: solid;
+    border-width: 3px;
+    overflow-x: hidden
+}
+.deadlinegap {
+    line-height: 400%;
+}
+.deadlinemonth {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    position: absolute;
+    padding-left: 16px;
+    /* left: 384px;
+    top: 257px; */
+    height: 51px;
+    width: 100%;
+    font-size: 32pt;
+    background-color: #E9C655;
+}
+.deadline {
+    font-size: 20pt;
+    line-height: 150%;
+}
+.notifications {
+    position: absolute;
+    right: 54px;
+    top: 257px;
+    height: 680px;
+    width: 615px;
+    background-color: #E48343;
+}
