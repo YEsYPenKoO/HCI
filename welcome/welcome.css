@@ -1,0 +1,44 @@
+@font-face {
+    font-family: 'Winthorpe Rg';
+    src: url('WinthorpeRg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+p {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 60px;
+    text-align: center;
+    line-height: 600%;
+}
+button {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding: 25px 10px;
+    background-color: #E58344;
+}
+.btn1 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.btn2 {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.logo {
+    margin: 0;
+    position: absolute;
+    top: 45px;
+    left: 115px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
