@@ -5,51 +5,202 @@
     font-style: normal;
     font-display: swap;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Winthorpe Rg', sans-serif;
+    background-color: #f3f4f6;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.app-container {
+    display: flex;
+    height: 100vh;
+}
+
+/* Sidebar Styles */
 .sidebar {
+    width: 337px;
+    background-color: #E48343;
+    height: 100%;
+    padding: 24px 0;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+    margin-bottom: 32px;
+    color: white;
+}
+
+.user-icon {
+    font-size: 24px;
+}
+
+.user-name {
+    font-size: 24px;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.nav-item.active::before {
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
-    height: 100vh;
-    width: 337px;
-    background-color: #E48343;
-}
-.deadlines {
-    position: absolute;
-    left: 384px;
-    top: 257px;
-    height: 680px;
-    width: 654px;
+    height: 100%;
+    width: 4px;
     background-color: white;
-    overflow: scroll;
-    border-radius: 1px;
-    border-color: black;
-    border-style: solid;
-    border-width: 3px;
-    overflow-x: hidden
 }
-.deadlinegap {
-    line-height: 400%;
-}
-.deadlinemonth {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
-    position: absolute;
-    padding-left: 16px;
-    /* left: 384px;
-    top: 257px; */
-    height: 51px;
+
+/* Page Content */
+.page-content {
     width: 100%;
-    font-size: 32pt;
-    background-color: #E9C655;
+    display: none;
 }
-.deadline {
-    font-size: 20pt;
-    line-height: 150%;
+
+.page-content.active {
+    display: flex;
+    gap: 24px;
 }
-.notifications {
-    position: absolute;
-    right: 54px;
-    top: 257px;
+
+/* Make sure main content can handle both layouts */
+.main-content {
+    flex: 1;
+    padding: 32px;
+}
+
+.dropdown-arrow {
+    margin-left: auto;
+    font-size: 12px;
+}
+
+/* Main Content Styles */
+.main-content {
+    flex: 1;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #000;
+}
+
+/* Deadlines Section */
+.deadlines-section {
+    flex: 1;
+    max-width: 654px;
+}
+
+.deadlines-container {
+    background-color: white;
+    border: 3px solid black;
     height: 680px;
+    overflow-y: auto;
+}
+
+.month-section {
+    width: 100%;
+}
+
+.month-header {
+    background-color: #E9C655;
+    padding: 16px;
+    font-size: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.deadline-items {
+    padding: 16px;
+}
+
+.deadline-item {
+    font-size: 20px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+/* Notifications Section */
+.notifications-section {
     width: 615px;
+}
+
+.notifications-container {
     background-color: #E48343;
+    height: 680px;
+    padding: 24px;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+    color: white;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-icon {
+    font-size: 28px;
+}
+
+.notification-message {
+    font-size: 20px;
+    margin-bottom: 6px;
+    line-height: 1.5;
+}
+
+.notification-time {
+    font-size: 16px;
+    opacity: 0.75;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }

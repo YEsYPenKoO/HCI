@@ -3,42 +3,137 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Teacher Dashboard - Fakeboard™</title>
     <link rel="stylesheet" href="main_teacher.css">
-    <script src="main_teacher.css"></script>
-
+    <script src="main_teacher.js" defer></script>
 </head>
 <body>
-    <div class='sidebar'></div>
-    <div class='deadlines'>
-        <div class='deadlinemonth'>November</div>
-        <div class='deadlinegap'>`</div>
-        <div class='deadline'>Friday 15th -  Homework - Class B</div>
-        <div class='deadline'>Wednesday 20th - Homework - Class C</div>
-        <div class='deadline'>Thursday 21th -  Homework - Class A</div>
-        <div class='deadline'>Friday 22th -  Homework - Class B</div>
-        <div class='deadline'>Monday 25th - Exam 2 - Class A, Class B</div>
-        <div class='deadline'>Wednesday 27th - Homework - Class C</div>
-        <div class='deadline'>Thursday 28th -  Homework - Class A</div>
-        <div class='deadline'>Friday 29th -  Homework - Class B</div>
+    <div class="app-container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="user-section">
+                <div class="user-icon">👤</div>
+                <span class="user-name">James Fairfield</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item" data-page="calendar">
+                    <div class="nav-icon">📅</div>
+                    <a href="" class="nav_link">
+                        <span>Calendar</span>
+                   </a>
+                </div>
+                
+                <div class="nav-item" data-page="courses">
+                       <div class="nav-icon">📚</div>
+                    <a href="">
+                         <span>Classes and Tests</span>
+                    </a>
+                    
+                
+                </div>
+                
+                <div class="nav-item" data-page="grades">
+                    <div class="nav-icon">📊</div>
+                    <a href="">
+                        <span>Grades</span>
+                    </a>
+                    <div class="dropdown-arrow">▼</div>
+                </div>
+            </nav>
+        </aside>
 
-        <div class='deadlinemonth'>December</div>
-        <div class='deadlinegap'>`</div>
-        <div class='deadline'>Thursday 5th -  Homework - Class A</div>
-        <div class='deadline'>Friday 6th -  Homework - Class B</div>
-        <div class='deadline'>Monday 9th - Exam 3 - Class A, B, C</div>
-        <div class='deadline'>Wednesday 11th - Homework - Class C</div>
-        <div class='deadline'>Thursday 12th -  Homework - Class A</div>
-        <div class='deadline'>Friday 13th -  Homework - Class B</div>
-        <div class='deadline'>Wednesday 18th - Homework - Class C</div>
-        <div class='deadline'>Thursday 19th -  Homework - Class A</div>
-        <div class='deadline'>Friday 20th -  Homework - Class B</div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Deadlines Section -->
+            <section class="deadlines-section">
+                <h2 class="section-title">Deadlines</h2>
+                <div class="deadlines-container">
+                    <!-- November -->
+                    <div class="month-section">
+                        <div class="month-header">November</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Friday 15th - Homework - Class B</div>
+                            <div class="deadline-item">Wednesday 20th - Homework - Class C</div>
+                            <div class="deadline-item">Thursday 21st - Homework - Class A</div>
+                            <div class="deadline-item">Friday 22nd - Homework - Class B</div>
+                            <div class="deadline-item">Monday 25th - Exam 2 - Class A, Class B</div>
+                            <div class="deadline-item">Wednesday 27th - Homework - Class C</div>
+                            <div class="deadline-item">Thursday 28th - Homework - Class A</div>
+                            <div class="deadline-item">Friday 29th - Homework - Class B</div>
+                        </div>
+                    </div>
 
-        <div class='deadlinemonth'>January</div>
-        <div class='deadlinegap'>`</div>
-        <div class='deadline'>Tuesday 7th - Math Homework - Class A</div>
-        <div class='deadline'>Thursday 9th - Homework - Class C</div>
+                    <!-- December -->
+                    <div class="month-section">
+                        <div class="month-header">December</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Thursday 5th - Homework - Class A</div>
+                            <div class="deadline-item">Friday 6th - Homework - Class B</div>
+                            <div class="deadline-item">Monday 9th - Exam 3 - Class A, B, C</div>
+                            <div class="deadline-item">Wednesday 11th - Homework - Class C</div>
+                            <div class="deadline-item">Thursday 12th - Homework - Class A</div>
+                            <div class="deadline-item">Friday 13th - Homework - Class B</div>
+                            <div class="deadline-item">Wednesday 18th - Homework - Class C</div>
+                            <div class="deadline-item">Thursday 19th - Homework - Class A</div>
+                            <div class="deadline-item">Friday 20th - Homework - Class B</div>
+                        </div>
+                    </div>
+
+                    <!-- January -->
+                    <div class="month-section">
+                        <div class="month-header">January</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Tuesday 7th - Math Homework - Class A</div>
+                            <div class="deadline-item">Thursday 9th - Homework - Class C</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Notifications Section -->
+            <div class="notifications-container">
+                <div class="notification-item">
+                    <div class="notification-icon">🔔</div>
+                    <div class="notification-content">
+                        <div class="notification-message">Emily from Class B submitted an assignment</div>
+                        <div class="notification-time">2 hours ago</div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon">📝</div>
+                    <div class="notification-content">
+                        <div class="notification-message">Class A test results are ready for review</div>
+                        <div class="notification-time">3 hours ago</div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon">👥</div>
+                    <div class="notification-content">
+                        <div class="notification-message">Parent meeting scheduled for Michael's parents - Class C</div>
+                        <div class="notification-time">5 hours ago</div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon">📊</div>
+                    <div class="notification-content">
+                        <div class="notification-message">Monthly progress reports due tomorrow for Class B</div>
+                        <div class="notification-time">Yesterday</div>
+                    </div>
+                </div>
+                
+                <div class="notification-item">
+                    <div class="notification-icon">📚</div>
+                    <div class="notification-content">
+                        <div class="notification-message">New curriculum update available for review</div>
+                        <div class="notification-time">2 days ago</div>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
-    <div class='notifications'></div>
 </body>
 </html>
