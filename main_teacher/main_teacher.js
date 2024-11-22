@@ -68,25 +68,4 @@ document.addEventListener('DOMContentLoaded', function() {
         // ... rest of your notifications ...
     ];
 
-    // Function to render notifications
-    function renderNotifications() {
-        const container = document.querySelector('.notifications-container');
-        container.innerHTML = '';
-        
-        sampleNotifications.forEach(notification => {
-            const notificationElement = document.createElement('div');
-            notificationElement.className = 'notification-item';
-            notificationElement.innerHTML = `
-                <div class="notification-icon">${notification.icon}</div>
-                <div class="notification-content">
-                    <div class="notification-message">${notification.message}</div>
-                    <div class="notification-time">${notification.time}</div>
-                </div>
-            `;
-            container.appendChild(notificationElement);
-        });
-    }
-
-    // Initialize notifications
-    renderNotifications();
 });
