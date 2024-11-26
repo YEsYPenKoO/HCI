@@ -1,39 +1,31 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Store references to frequently accessed elements
-    const navItems = document.querySelectorAll('.nav-item');
-    const pages = document.querySelectorAll('.page-content');
+    const gradesNav = document.querySelector('[data-page="grades"]');
+    const dropdownMenu = document.querySelector('.grades-dropdown');
+    const gradesLink = gradesNav.querySelector('a');
     
-    // Function to handle navigation
-    function navigateToPage(pageId) {
-        // Remove active class from all nav items and pages
-        navItems.forEach(item => item.classList.remove('active'));
-        pages.forEach(page => page.style.display = 'none');
-        
-        // Add active class to clicked nav item
-        const activeNavItem = document.querySelector(`[data-page="${pageId}"]`);
-        if (activeNavItem) {
-            activeNavItem.classList.add('active');
+    gradesNav.addEventListener('click', function(e) {
+        if (!e.target.closest('.grades-dropdown')) {
+            e.preventDefault();
+            dropdownMenu.classList.toggle('show');
+            gradesNav.classList.toggle('active');
         }
-        
-        // Show selected page
-        const activePage = document.getElementById(`${pageId}-page`);
-        if (activePage) {
-            activePage.style.display = 'flex';
-        }
-        
-        // Save the current page to localStorage
-        localStorage.setItem('currentPage', pageId);
-    }
-    
-    // Add click handlers to nav items
-    navItems.forEach(item => {
-        item.addEventListener('click', () => {
-            const pageId = item.dataset.page;
-            navigateToPage(pageId);
-        });
     });
+
+    gradesLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        dropdownMenu.classList.toggle('show');
+        gradesNav.classList.toggle('active');
+    });
+
+    document.addEventListener('click', function(e) {
+        if (!gradesNav.contains(e.target)) {
+            dropdownMenu.classList.remove('show');
+            gradesNav.classList.remove('active');
+        }
+    });
+
+    const navItems = document.querySelectorAll('.nav-item');
     
-    // Add hover effects
     navItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
             if (!item.classList.contains('active')) {
@@ -48,24 +40,27 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Check for saved page on load
-    const savedPage = localStorage.getItem('currentPage');
-    if (savedPage) {
-        navigateToPage(savedPage);
-    } else {
-        // Show dashboard by default
-        document.getElementById('dashboard-page').style.display = 'flex';
-    }
+    document.querySelector('.grades-dropdown').addEventListener('click', function(e) {
+        e.stopPropagation();
+    });
 
-    // Your existing notification code here
-    // Sample notifications data
-    const sampleNotifications = [
-        {
-            icon: '🔔',
-            message: 'Emily from Class B submitted an assignment',
-            time: '2 hours ago'
-        },
-        // ... rest of your notifications ...
-    ];
+    const dropdownItems = document.querySelectorAll('.grades-dropdown-item');
+    dropdownItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            window.location.href = href;
+        });
+    });
 
-});
+    const backButton = document.querySelector('.back-button a');
+    backButton.addEventListener('mouseenter', () => {
+        backButton.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
+    });
+    
+    backButton.addEventListener('mouseleave', () => {
+        backButton.style.backgroundColor = 'transparent';
+    });
+});git 
+
+
+

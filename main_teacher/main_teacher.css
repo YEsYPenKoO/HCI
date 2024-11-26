@@ -12,25 +12,64 @@
     box-sizing: border-box;
 }
 
-body {
-    font-family: 'Winthorpe Rg', sans-serif;
-    background-color: #f3f4f6;
-    height: 100vh;
+html, body {
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
+    background-color: #f3f4f6;
+    overflow-x: hidden;
 }
 
 .app-container {
     display: flex;
-    height: 100vh;
+    min-height: 100vh;
+    width: 100%;
 }
 
-/* Sidebar Styles */
 .sidebar {
     width: 337px;
+    height: 100vh;
     background-color: #E48343;
-    height: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
     padding: 24px 0;
+    z-index: 10;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 337px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    max-width: calc(100vw - 337px);
+}
+
+.deadlines-section {
+    flex: 1;
+    max-width: 654px;
+}
+
+.deadlines-container {
+    height: 680px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    border: 3px solid black;
+}
+
+.notifications-section {
+    width: 615px;
+}
+
+.notifications-container {
+    background-color: #E48343;
+    height: 680px;
+    padding: 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .user-section {
@@ -42,12 +81,9 @@ body {
     color: white;
 }
 
-.user-icon {
-    font-size: 24px;
-}
-
 .user-name {
     font-size: 24px;
+    font-family: 'Winthorpe Rg', sans-serif;
 }
 
 .nav-menu {
@@ -64,11 +100,100 @@ body {
     color: white;
     cursor: pointer;
     font-size: 24px;
+    position: relative;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #000;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.month-header {
+    background-color: #E9C655;
+    padding: 16px;
+    font-size: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.deadline-items {
+    padding: 16px;
+}
+
+.deadline-item {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+    color: white;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-message {
+    font-size: 20px;
+    margin-bottom: 6px;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.notification-time {
+    font-size: 16px;
+    opacity: 0.75;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.dropdown-arrow {
+    margin-left: auto;
+    transform: scaleY(0.5);
+    transition: transform 0.2s ease;
+    font-size: 12px;
+}
+
+.grades-dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: #E48343;
+    display: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grades-dropdown.show {
+    display: block;
+}
+
+.grades-dropdown-item {
+    display: block;
+    padding: 12px 24px 12px 60px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.grades-dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-item.active {
     background-color: rgba(255, 255, 255, 0.2);
-    position: relative;
 }
 
 .nav-item.active::before {
@@ -81,126 +206,81 @@ body {
     background-color: white;
 }
 
-/* Page Content */
-.page-content {
-    width: 100%;
-    display: none;
+.nav-item.active .dropdown-arrow {
+    transform: scaleY(-0.5);
 }
 
-.page-content.active {
-    display: flex;
-    gap: 24px;
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Make sure main content can handle both layouts */
-.main-content {
-    flex: 1;
-    padding: 32px;
+.nav-item.active:hover {
+    background-color: rgba(255, 255, 255, 0.2);
 }
 
-.dropdown-arrow {
-    margin-left: auto;
-    font-size: 12px;
+.deadlines-container::-webkit-scrollbar,
+.notifications-container::-webkit-scrollbar {
+    width: 10px;
 }
 
-/* Main Content Styles */
-.main-content {
-    flex: 1;
-    padding: 32px;
-    display: flex;
-    gap: 24px;
-}
-
-.section-title {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #000;
-}
-
-/* Deadlines Section */
-.deadlines-section {
-    flex: 1;
-    max-width: 654px;
-}
-
-.deadlines-container {
-    background-color: white;
-    border: 3px solid black;
-    height: 680px;
-    overflow-y: auto;
-}
-
-.month-section {
-    width: 100%;
-}
-
-.month-header {
-    background-color: #E9C655;
-    padding: 16px;
-    font-size: 32px;
-    position: sticky;
-    top: 0;
-    z-index: 1;
-}
-
-.deadline-items {
-    padding: 16px;
-}
-
-.deadline-item {
-    font-size: 20px;
-    margin-bottom: 12px;
-    line-height: 1.5;
-}
-
-/* Notifications Section */
-.notifications-section {
-    width: 615px;
-}
-
-.notifications-container {
-    background-color: #E48343;
-    height: 680px;
-    padding: 24px;
-}
-
-.notification-item {
-    display: flex;
-    gap: 12px;
-    color: white;
-    padding: 16px 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.notification-icon {
-    font-size: 28px;
-}
-
-.notification-message {
-    font-size: 20px;
-    margin-bottom: 6px;
-    line-height: 1.5;
-}
-
-.notification-time {
-    font-size: 16px;
-    opacity: 0.75;
-}
-
-/* Scrollbar Styles */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
+.deadlines-container::-webkit-scrollbar-track,
+.notifications-container::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
 
-::-webkit-scrollbar-thumb {
+.deadlines-container::-webkit-scrollbar-thumb,
+.notifications-container::-webkit-scrollbar-thumb {
     background: #888;
-    border-radius: 4px;
+    border-radius: 5px;
 }
 
-::-webkit-scrollbar-thumb:hover {
+.deadlines-container::-webkit-scrollbar-thumb:hover,
+.notifications-container::-webkit-scrollbar-thumb:hover {
     background: #555;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.notification-icon {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+
+.back-button {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.back-button a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Winthorpe Rg', sans-serif;
+    font-size: 24px;
+    padding: 12px;
+    transition: background-color 0.2s ease;
+}
+
+.back-button a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.back-icon {
+    font-size: 28px;
 }
