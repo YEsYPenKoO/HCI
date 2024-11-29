@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             
             testCard.addEventListener('click', (e) => {
                 if (!e.target.classList.contains('burger-dots')) {
-                    window.location.href = `/Tests/test.html?id=${test.id}`;
+                    window.location.href = `test.html?id=${test.id}`;
                 }
             });
             
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         tests.push(newTest);
         localStorage.setItem('tests', JSON.stringify(tests));
-        window.location.href = `/Tests/test.html?id=${newTest.id}`;
+        window.location.href = `test.html?id=${newTest.id}`;
     });
 
     editTestForm.addEventListener('submit', (e) => {

@@ -1,0 +1,114 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create a Test - Teacher</title>
+    <link rel="stylesheet" href="test.css">
+    <script src="test.js" defer></script>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="/Classes and Tests/classes_tests.html" class="back-link">
+            <span class="back-icon">←</span>
+            Back to Tests
+        </a>
+        <h1 id="testName">Homework 9</h1>
+        <button class="finish-button">FINISH</button>
+    </div>
+
+    <div class="test-container">
+        <div id="questionsContainer" class="questions-container">
+        </div>
+        <button id="addQuestionBtn" class="add-question-btn">+</button>
+    </div>
+
+    <!-- New Question Modal -->
+    <div id="questionModal" class="modal">
+        <div class="modal-content">
+            <h2>New Question</h2>
+            <form id="questionForm">
+                <div class="form-group">
+                    <label>Choose a type *</label>
+                    <select id="questionType" required>
+                        <option value="open">Open</option>
+                        <option value="single">Single Choice</option>
+                        <option value="multiple">Multiple Choice</option>
+                    </select>
+                </div>
+
+                <div id="choiceOptionsSection" class="form-group" style="display: none;">
+                    <label>Number of options</label>
+                    <select id="numOptions">
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Points value (out of 100) *</label>
+                    <input type="number" id="questionPoints" min="1" max="100" required>
+                    <p id="remainingPoints" class="points-info">Remaining points: 100</p>
+                </div>
+
+                <div class="form-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="allowAttachments">
+                        Allow attachments
+                    </label>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="submit" class="save-button">Save</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Question Template -->
+    <template id="questionTemplate">
+        <div class="question">
+            <div class="question-header">
+                <span class="question-number"></span>
+                <div class="points-value"></div>
+                <div class="burger-menu">
+                    <button class="burger-dots">⋮</button>
+                    <div class="burger-dropdown">
+                        <div class="burger-item" data-action="duplicate">
+                            <span class="menu-icon">📋</span>Duplicate
+                        </div>
+                        <div class="burger-item" data-action="delete">
+                            <span class="menu-icon">🗑️</span>Delete
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input type="text" class="question-text" placeholder="Click here to type the task" required>
+            <div class="question-content">
+                <div class="choices-container" style="display: none;"></div>
+                <div class="attachment-section" style="display: none;">
+                    <label class="attachment-label">
+                        <span class="attachment-icon">📎</span>
+                        <input type="file" class="file-input" multiple>
+                        <span>Click to add attachments</span>
+                    </label>
+                    <div class="attached-files"></div>
+                </div>
+            </div>
+            <div class="teacher-feedback">
+                <textarea placeholder="Teacher's feedback" rows="4"></textarea>
+            </div>
+        </div>
+    </template>
+
+    <!-- Choice Option Template -->
+    <template id="choiceTemplate">
+        <div class="choice-option">
+            <input type="checkbox" class="choice-select">
+            <input type="text" class="choice-text" placeholder="Enter option">
+        </div>
+    </template>
+</body>
+</html>
