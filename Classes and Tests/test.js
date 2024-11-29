@@ -250,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.querySelector('.finish-button').addEventListener('click', () => {
-        window.location.href = '/Classes and Tests/classes_tests.html';
+        window.location.href = 'classes_tests.html'; //CHECK THIS LATER (Checked, seems to work)
     });
 
     document.querySelector('.cancel-button').addEventListener('click', () => {
