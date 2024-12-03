@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+    body {
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome!</title>
@@ -9,6 +17,13 @@
     
 </head>
 <body>
-    
+    <p>Welcome</p>
+    <div class="logo"><button><b>Fakeboard™</b></button></div>
+    <div class="emailtext">Email Address</a></div>
+    <input type="text" class="emailtextbox" id="emailtextbox">
+    <div class="passwordtext">Password</a></div>
+    <input type="text" class="passwordtextbox" id="passwordtextbox">
+    <p id="result">RESULT</p>
+    <div class="login"><button onclick="login()">Login</button></div>
 </body>
 </html>
