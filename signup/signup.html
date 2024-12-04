@@ -1,13 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+    body {
+        background-image: url('background.jpg');
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: 100% 100%;
+      }
+    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>Welcome!</title>
     <link rel="stylesheet" href="signup.css">
-    <script src="signup.js"></script>
+    <script src="../loginregister.js"></script>
+    
 </head>
 <body>
-    
+    <p>Welcome</p>
+    <div class="logo"><button><b>Fakeboard™</b></button></div>
+    <div class="emailtext">Email Address</div>
+    <input type="text" class="emailtextbox" id="emailtextbox">
+    <div class="passwordtext">Password</div>
+    <input type="text" class="passwordtextbox" id="passwordtextbox">
+    <div class="result" id="result">`</div>
+    <div class="register"><button onclick="register()">Register</button></div>
 </body>
 </html>

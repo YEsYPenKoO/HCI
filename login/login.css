@@ -90,3 +90,12 @@ button {
     -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
 }
+.result {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 20px;
+    line-height: 600%;
+    position: absolute;
+    top: 67%;
+    left: 43%;
+    text-align: center;
+}

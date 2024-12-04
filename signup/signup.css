@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'Winthorpe Rg';
+    src: url('WinthorpeRg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+p {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 60px;
+    text-align: center;
+    line-height: 600%;
+}
+button {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 40px;
+    text-align: center;
+    padding: 25px 10px;
+    background-color: #E48343;
+}
+.logo {
+    margin: 0;
+    position: absolute;
+    top: 45px;
+    left: 115px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+.emailtext {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 36px;
+    margin: 0;
+    position: absolute;
+    top: 45%;
+    left: 40%;
+    /* -ms-transform: translate(-50%, -50%); */
+    /* transform: translate(-50%, -50%); */
+    text-align: left;
+}
+
+.emailtextbox {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 36px;
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 40%;
+    /* -ms-transform: translate(-50%, -50%); */
+    /* transform: translate(-50%, -50%); */
+    text-align: left;
+}
+
+.passwordtext {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 36px;
+    margin: 0;
+    position: absolute;
+    top: 60%;
+    left: 40%;
+    /* -ms-transform: translate(-50%, -50%); */
+    /* transform: translate(-50%, -50%); */
+    text-align: left;
+}
+
+.passwordtextbox {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 36px;
+    margin: 0;
+    position: absolute;
+    top: 65%;
+    left: 40%;
+    /* -ms-transform: translate(-50%, -50%); */
+    /* transform: translate(-50%, -50%); */
+    text-align: left;
+}
+.login {
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 51%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.register {
+    margin: 0;
+    position: absolute;
+    top: 80%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.result {
+    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    font-size: 20px;
+    line-height: 600%;
+    position: absolute;
+    top: 67%;
+    left: 48%;
+    text-align: center;
+}
