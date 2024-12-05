@@ -9,7 +9,7 @@ function login() {
     if ((email = sessionStorage.getItem("email")) && (password = sessionStorage.getItem("password"))) {
         console.log("Login Success");
         document.getElementById("result").innerHTML="Login Success!";
-        window.location.replace("../Teacher's hub/main_teacher.html");
+        window.location.replace("/Teacher/main_teacher.html");
     }
     else {
         console.log("Login Failure");

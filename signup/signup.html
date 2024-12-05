@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-    body {
-        background-image: url('background.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-      }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome!</title>
+    <title>Register for teacher - Fakeboard™</title>
     <link rel="stylesheet" href="signup.css">
-    <script src="../loginregister.js"></script>
-    
+    <script src="signup.js"></script>
 </head>
 <body>
-    <p>Welcome</p>
-    <div class="logo"><button><b>Fakeboard™</b></button></div>
-    <div class="emailtext">Email Address</div>
-    <input type="text" class="emailtextbox" id="emailtextbox">
-    <div class="passwordtext">Password</div>
-    <input type="text" class="passwordtextbox" id="passwordtextbox">
-    <div class="result" id="result">`</div>
-    <div class="register"><button onclick="register()">Register</button></div>
+    <div class="signup-container">
+        <div class="top-bar">
+            <a href="/Starting Page/welcome.html" class="back-link">
+                <span class="back-arrow">←</span>
+                Back to Menu
+            </a>
+        </div>
+
+        <div class="form-container">
+            <h1>Create an account</h1>
+            
+            <form id="signupForm" class="signup-form">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name</label>
+                        <input type="text" id="firstName" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" id="lastName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email Adress</label>
+                        <input type="email" id="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="schoolName">School Name</label>
+                        <input type="text" id="schoolName" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="retypePassword">Retype the password</label>
+                        <input type="password" id="retypePassword" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="signup-button">Sign Up</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

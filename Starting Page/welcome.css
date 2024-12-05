@@ -5,40 +5,87 @@
     font-style: normal;
     font-display: swap;
 }
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Winthorpe Rg', sans-serif;
+    color: #000;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
 p {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
     font-size: 60px;
     text-align: center;
     line-height: 600%;
+    position: relative;
+    z-index: 2;
 }
+
 button {
     font-family: 'Winthorpe Rg', Fallback, sans-serif;
     font-size: 40px;
     text-align: center;
-    padding: 25px 10px;
+    padding: 25px 40px;
     background-color: #E48343;
+    border: none;
+    cursor: pointer;
+    min-width: 300px;
+    transition: background-color 0.2s ease;
+    position: relative;
 }
+
+button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+button:hover::before {
+    opacity: 1;
+}
+
 .btn1 {
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 40%;
-    -ms-transform: translate(-50%, -50%);
+    left: 37%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
+
 .btn2 {
     margin: 0;
     position: absolute;
     top: 50%;
-    left: 60%;
-    -ms-transform: translate(-50%, -50%);
+    left: 63%;
     transform: translate(-50%, -50%);
+    z-index: 2;
 }
+
 .logo {
     margin: 0;
     position: absolute;
     top: 45px;
-    left: 115px;
-    -ms-transform: translate(-50%, -50%);
+    left: 170px;
     transform: translate(-50%, -50%);
+    font-size: 44px;
+    font-weight: bold;
+    z-index: 2;
 }
+

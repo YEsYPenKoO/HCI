@@ -1,30 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <style>
-    body {
-        background-image: url('background.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
-      }
-    </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome!</title>
-    <link rel="stylesheet" href="login.css">
-    <script src="../loginregister.js"></script>
-    
+    <title>Login</title>
+    <link rel="stylesheet" href="login.css">   
+    <script src="login.js"></script>
 </head>
 <body>
-    <p>Welcome</p>
-    <div class="logo"><button><b>Fakeboard™</b></button></div>
-    <div class="emailtext">Email Address</div>
-    <input type="text" class="emailtextbox" id="emailtextbox">
-    <div class="passwordtext">Password</div>
-    <input type="text" class="passwordtextbox" id="passwordtextbox">
-    <div class="login"><button onclick="login()">Login</button></div>
-    <div class="register"><a href="../signup/signup.html"><button>Register</button></a></div>
-    <div class="result" id="result">`</div>
+    <div class="container">
+        <div class="logo">Fakeboard™</div>
+        <div class="form-container">
+            <h1 class="login-text">Login</h1>
+            <div class="emailtext">Email Address</div>
+            <input type="email" id="emailtextbox" name="email" class="emailtextbox" required>
+            <div class="passwordtext">Password</div>
+            <input type="password" id="passwordtextbox" name="password" class="passwordtextbox" required>
+            <div class="button-container">
+                <button class="login" onclick='login()'>Login</button>
+            </div>
+            <div class="signup-container">
+                <div class="signup-message">Don't have an account yet?</div>
+                <button class="register" onclick="window.location.href='/signup/signup.html'">Sign up</button>
+            </div>
+            <div class="result" id="result"></div>
+        </div>
+        <div class="back-button">
+            <a href="../Starting Page/welcome.html">
+                <span class="back-icon">←</span>
+                Back to Menu
+            </a>
+        </div>
+    </div>
 </body>
 </html>

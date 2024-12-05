@@ -5,97 +5,157 @@
     font-style: normal;
     font-display: swap;
 }
-p {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
-    font-size: 60px;
-    text-align: center;
-    line-height: 600%;
-}
-button {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
-    font-size: 40px;
-    text-align: center;
-    padding: 25px 10px;
-    background-color: #E48343;
-}
-.logo {
+
+* {
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Winthorpe Rg', sans-serif;
+    color: #000;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url('background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.1);
+    z-index: 1;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    position: relative;
+    z-index: 2;
+}
+
+.logo {
     position: absolute;
     top: 45px;
-    left: 115px;
-    -ms-transform: translate(-50%, -50%);
+    left: 170px;
     transform: translate(-50%, -50%);
-}
-.emailtext {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
-    font-size: 36px;
-    margin: 0;
-    position: absolute;
-    top: 45%;
-    left: 40%;
-    /* -ms-transform: translate(-50%, -50%); */
-    /* transform: translate(-50%, -50%); */
-    text-align: left;
+    font-size: 44px;
+    font-weight: bold;
 }
 
-.emailtextbox {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
-    font-size: 36px;
-    margin: 0;
-    position: absolute;
-    top: 50%;
-    left: 40%;
-    /* -ms-transform: translate(-50%, -50%); */
-    /* transform: translate(-50%, -50%); */
-    text-align: left;
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
+.login-text {
+    font-size: 48px;
+    margin-bottom: 30px;
+}
+
+.emailtext,
 .passwordtext {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
     font-size: 36px;
-    margin: 0;
-    position: absolute;
-    top: 60%;
-    left: 40%;
-    /* -ms-transform: translate(-50%, -50%); */
-    /* transform: translate(-50%, -50%); */
-    text-align: left;
+    margin-bottom: 10px;
 }
 
+.emailtextbox,
 .passwordtextbox {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
-    font-size: 36px;
-    margin: 0;
-    position: absolute;
-    top: 65%;
-    left: 40%;
-    /* -ms-transform: translate(-50%, -50%); */
-    /* transform: translate(-50%, -50%); */
-    text-align: left;
+    width: 300px;
+    padding: 10px;
+    font-size: 24px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
 }
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
 .login {
-    margin: 0;
-    position: absolute;
-    top: 80%;
-    left: 40%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    padding: 15px 30px;
+    font-size: 24px;
+    background-color: #E48343;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.login:hover {
+    background-color: #c96f33;
+}
+
+.signup-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+.signup-message {
+    margin-right: 10px;
 }
 
 .register {
-    margin: 0;
-    position: absolute;
-    top: 80%;
-    left: 60%;
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #f1f1f1;
+    color: #333;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
 }
+
+.register:hover {
+    background-color: #e6e6e6;
+}
+
 .result {
-    font-family: 'Winthorpe Rg', Fallback, sans-serif;
+    margin-top: 20px;
     font-size: 20px;
-    line-height: 600%;
-    position: absolute;
-    top: 67%;
-    left: 43%;
     text-align: center;
+    color: #f44336;
+}
+
+
+.back-button {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.back-button a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #000;
+    text-decoration: none;
+    font-size: 44px;
+    padding: 12px;
+    transition: background-color 0.2s;
+}
+
+.back-button a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.back-icon {
+    font-size: 28px;
 }
