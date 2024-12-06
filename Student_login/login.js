@@ -2,7 +2,7 @@ function login() {
     var studentId = document.getElementById("studentidtextbox").value;
     var password = document.getElementById("passwordtextbox").value;
 
-    if (studentId === "100413108" && password === "Tarelka71177") {
+    if (studentId === "23451" && password === "4321") {
         console.log("Login Success");
         document.getElementById("result").innerHTML = "Login Success!";
         window.location.replace("../Student/main_student.html");

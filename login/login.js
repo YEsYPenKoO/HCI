@@ -2,7 +2,7 @@ function login() {
     var email = document.getElementById("emailtextbox").value;
     var password = document.getElementById("passwordtextbox").value;
 
-    if (email === "james123@gmail.com" && password === "1234") {
+    if (email === "james123@gmail.com" && password === "4321") {
         console.log("Login Success");
         document.getElementById("result").innerHTML = "Login Success!";
         window.location.replace("../Teacher/main_teacher.html");

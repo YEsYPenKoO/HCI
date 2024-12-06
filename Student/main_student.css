@@ -1,0 +1,210 @@
+@font-face {
+    font-family: 'Winthorpe Rg';
+    src: url('WinthorpeRg.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #f3f4f6;
+    overflow-x: hidden;
+}
+
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    width: 100%;
+}
+
+.sidebar {
+    width: 337px;
+    height: 100vh;
+    background-color: #E48343;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding: 24px 0;
+    z-index: 10;
+}
+
+.main-content {
+    flex: 1;
+    margin-left: 337px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    max-width: calc(100vw - 337px);
+}
+
+.deadlines-section,
+.notifications-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #000;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.deadlines-section {
+    flex: 1;
+    max-width: 654px;
+}
+
+.deadlines-container {
+    height: 680px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    background-color: white;
+    border: 3px solid black;
+}
+
+.notifications-section {
+    width: 615px;
+}
+
+.notifications-container {
+    background-color: #E48343;
+    height: 680px;
+    padding: 24px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+    margin-bottom: 32px;
+    color: white;
+}
+
+.user-name {
+    font-size: 24px;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    position: relative;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.month-header {
+    background-color: #E9C655;
+    padding: 16px;
+    font-size: 32px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.deadline-items {
+    padding: 16px;
+}
+
+.deadline-item {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.notification-item {
+    display: flex;
+    gap: 12px;
+    color: white;
+    padding: 16px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.notification-message {
+    font-size: 20px;
+    margin-bottom: 6px;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.notification-time {
+    font-size: 16px;
+    opacity: 0.75;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.nav-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+}
+
+.notification-icon {
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.notification-content {
+    flex: 1;
+}
+
+.back-button {
+    position: absolute;
+    bottom: 24px;
+    left: 0;
+    width: 100%;
+    padding: 0 24px;
+}
+
+.back-button a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Winthorpe Rg', sans-serif;
+    font-size: 24px;
+    padding: 12px;
+    transition: background-color 0.2s;
+}
+
+.back-button a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.back-icon {
+    font-size: 28px;
+}

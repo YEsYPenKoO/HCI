@@ -3,12 +3,133 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Main Page</title>
+    <title>Student Dashboard - Fakeboard™</title>
     <link rel="stylesheet" href="main_student.css">
-    <script src="main_student.css"></script>
-
+    <script src="main_student.js" defer></script>
 </head>
 <body>
-    
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="user-section">
+                <div class="user-icon">👤</div>
+                <span class="user-name">Haley Smith</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item" data-page="calendar">
+                    <div class="nav-icon">📅</div>
+                    <a href="#calendar">Calendar</a>
+                </div>
+                
+                <div class="nav-item" data-page="tests">
+                    <div class="nav-icon">📚</div>
+                    <a href="#tests">Tests and Grades</a>
+                </div>
+            </nav>
+
+            <div class="back-button">
+                <a href="/Starting Page/welcome.html">
+                    <div class="back-icon">←</div>
+                    <span>Back to Starting Page</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <section class="deadlines-section">
+                <h2 class="section-title">Deadlines</h2>
+                <div class="deadlines-container">
+                    <div class="month-section">
+                        <div class="month-header">November</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Thursday 21st - Homework - Class A</div>
+                            <div class="deadline-item">Monday 25th - Exam 2</div>
+                            <div class="deadline-item">Thursday 28th - Homework - Class A</div>
+                        </div>
+                    </div>
+
+                    <div class="month-section">
+                        <div class="month-header">December</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Thursday 5th - Homework - Class A</div>
+                            <div class="deadline-item">Monday 9th - Exam 3</div>
+                            <div class="deadline-item">Thursday 12th - Homework - Class A</div>
+                            <div class="deadline-item">Thursday 19th - Homework - Class A</div>
+                        </div>
+                    </div>
+
+                    <div class="month-section">
+                        <div class="month-header">January</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Thursday 16th - Homework - Class A</div>
+                            <div class="deadline-item">Monday 20th - Mid-Term Exam</div>
+                            <div class="deadline-item">Thursday 23rd - Homework - Class A</div>
+                            <div class="deadline-item">Thursday 30th - Homework - Class A</div>
+                        </div>
+                    </div>
+
+                    <div class="month-section">
+                        <div class="month-header">February</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Thursday 6th - Homework - Class A</div>
+                            <div class="deadline-item">Monday 10th - Unit Test</div>
+                            <div class="deadline-item">Thursday 13th - Homework - Class A</div>
+                            <div class="deadline-item">Thursday 20th - Homework - Class A</div>
+                            <div class="deadline-item">Monday 24th - Unit Test</div>
+                            <div class="deadline-item">Thursday 27th - Homework - Class A</div>
+                        </div>
+                    </div>
+
+                    <div class="month-section">
+                        <div class="month-header">March</div>
+                        <div class="deadline-items">
+                            <div class="deadline-item">Thursday 6th - Homework - Class A</div>
+                            <div class="deadline-item">Thursday 13th - Homework - Class A</div>
+                            <div class="deadline-item">Monday 17th - Final Exam</div>
+                            <div class="deadline-item">Thursday 20th - Homework - Class A</div>
+                            <div class="deadline-item">Thursday 27th - Homework - Class A</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="notifications-section">
+                <h2 class="section-title">Notifications</h2>
+                <div class="notifications-container">
+                    <div class="notification-item">
+                        <div class="notification-icon">📝</div>
+                        <div class="notification-content">
+                            <div class="notification-message">Quiz reminder: Polynomial Functions pop quiz next class. Review quadratic expressions and factoring methods from Week 5.</div>
+                            <div class="notification-time">2 hours ago</div>
+                        </div>
+                    </div>
+                    
+                    <div class="notification-item">
+                        <div class="notification-icon">✅</div>
+                        <div class="notification-content">
+                            <div class="notification-message">Your Week 5 homework submission has been graded. View your feedback in Tests and Grades.</div>
+                            <div class="notification-time">3 hours ago</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon">📝</div>
+                        <div class="notification-content">
+                            <div class="notification-message">Quiz reminder: Geometric Theorems assessment on Friday at 2:00 PM. Focus on Weeks 4-7 content.</div>
+                            <div class="notification-time">Yesterday</div>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div class="notification-icon">📚</div>
+                        <div class="notification-content">
+                            <div class="notification-message">Quiz reminder: Complex numbers test tomorrow at 10:00 AM. Review Chapter 3 materials.</div>
+                            <div class="notification-time">2 days ago</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
 </html>
