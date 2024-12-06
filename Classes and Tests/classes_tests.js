@@ -8,37 +8,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const testModal = document.getElementById('newTestModal');
     const editTestModal = document.getElementById('editTestModal');
     const errorModal = document.getElementById('errorModal');
+    const credentialsModal = document.getElementById('credentialsModal');
     const classForm = document.getElementById('newClassForm');
     const editClassForm = document.getElementById('editClassForm');
     const testForm = document.getElementById('newTestForm');
     const editTestForm = document.getElementById('editTestForm');
     const assignClassSelect = document.getElementById('assignClass');
-    const classContextMenu = document.getElementById('classContextMenu');
-    const testContextMenu = document.getElementById('testContextMenu');
     const gradesNav = document.querySelector('[data-page="grades"]');
     const dropdownMenu = document.querySelector('.grades-dropdown');
 
     let classes = JSON.parse(localStorage.getItem('classes')) || [];
     let tests = JSON.parse(localStorage.getItem('tests')) || [];
-    let currentClassId = null;
-    let currentTestId = null;
 
     function generateRandomColor() {
         const colors = [
             '#4CAF50', '#2196F3', '#9C27B0', '#FF5722', '#607D8B',
-            '#795548', '#FF9800', '#009688', '#673AB7', '#3F51B5',
-            '#E91E63', '#00BCD4', '#CDDC39', '#FFC107', '#7C4DFF',
-            '#FF5252', '#8BC34A', '#03A9F4', '#E040FB', '#FF7043',
-            '#1E88E5', '#5E35B1', '#D81B60', '#3949AB', '#00897B', 
-            '#C0CA33', '#43A047', '#6D4C41', '#9E9D24', '#D32F2F',
-            '#AFB42B', '#7B1FA2', '#0097A7', '#FB8C00', '#F57C00',
-            '#689F38', '#F50057', '#039BE5', '#8E24AA', '#E53935',
-            '#546E7A', '#FF9800', '#C51162', '#33691E', '#880E4F',
-            '#AA00FF', '#311B92', '#FFD600', '#B71C1C', '#827717',
-            '#6200EA', '#004D40', '#FF6D00', '#BF360C', '#FFFF00',
-            '#FF5722', '#33691E', '#4A148C', '#A52714', '#BF360C',
-            '#3E2723', '#1B5E20', '#880E4F', '#FF0000', '#FF4081',
-            '#006064', '#EF6C00', '#E65100', '#01579B', '#263238'
+            '#795548', '#FF9800', '#009688', '#673AB7', '#3F51B5'
         ];
         return colors[Math.floor(Math.random() * colors.length)];
     }
@@ -47,24 +32,92 @@ document.addEventListener('DOMContentLoaded', function() {
         return Date.now().toString(36) + Math.random().toString(36).substr(2);
     }
 
+    function generateStudentNumber(classLetter) {
+        const numbers = Array.from({length: 5}, () => Math.floor(Math.random() * 10)).join('');
+        return `${numbers}${classLetter}`;
+    }
+
+    function generatePassword() {
+        const lowercase = 'abcdefghijklmnopqrstuvwxyz';
+        const uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const numbers = '0123456789';
+        const special = '!@#$%^&*';
+        
+        let password = '';
+        password += uppercase[Math.floor(Math.random() * uppercase.length)];
+        password += special[Math.floor(Math.random() * special.length)];
+        password += numbers[Math.floor(Math.random() * numbers.length)];
+        
+        while (password.length < 9) {
+            const allChars = lowercase + uppercase + numbers;
+            password += allChars[Math.floor(Math.random() * allChars.length)];
+        }
+        
+        return password.split('').sort(() => Math.random() - 0.5).join('');
+    }
+
+    function showCredentialsModal(className) {
+        const classLetter = className.charAt(0).toUpperCase();
+        document.getElementById('studentNumber').value = generateStudentNumber(classLetter);
+        document.getElementById('studentPassword').value = generatePassword();
+        credentialsModal.classList.add('show');
+    }
+
     function showError(message) {
         document.getElementById('errorMessage').textContent = message;
         errorModal.classList.add('show');
     }
 
-    function validateDate(date) {
-        const selectedDate = new Date(date);
-        const now = new Date();
-        const maxDate = new Date('2026-12-31');
-        now.setHours(0, 0, 0, 0);
+    function createClassCard(classItem) {
+        const classCard = document.createElement('div');
+        classCard.className = 'class-card';
+        classCard.style.backgroundColor = classItem.color;
         
-        if (selectedDate < now) {
-            return 'Date cannot be in the past';
-        }
-        if (selectedDate > maxDate) {
-            return 'Date cannot be later than 2026';
-        }
-        return null;
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card-content';
+        cardContent.textContent = classItem.name;
+        
+        const cardActions = document.createElement('div');
+        cardActions.className = 'card-actions';
+        
+        const editBtn = document.createElement('button');
+        editBtn.className = 'action-btn edit-btn';
+        editBtn.innerHTML = '✏️';
+        editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            editClass(classItem.id);
+        });
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'action-btn delete-btn';
+        deleteBtn.innerHTML = '🗑️';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            if (tests.some(t => t.assignedClassId === classItem.id)) {
+                showError('Cannot delete class that has tests assigned to it.');
+            } else {
+                classes = classes.filter(c => c.id !== classItem.id);
+                localStorage.setItem('classes', JSON.stringify(classes));
+                updateClassesDisplay();
+            }
+        });
+        
+        const generateBtn = document.createElement('button');
+        generateBtn.className = 'action-btn generate-btn';
+        generateBtn.innerHTML = '👤+';
+        generateBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            showCredentialsModal(classItem.name);
+        });
+        
+        cardActions.appendChild(editBtn);
+        cardActions.appendChild(deleteBtn);
+        cardActions.appendChild(generateBtn);
+        
+        classCard.appendChild(cardContent);
+        classCard.appendChild(cardActions);
+        
+        return classCard;
     }
 
     function updateClassesDisplay() {
@@ -73,23 +126,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('editAssignClass').innerHTML = '';
         
         classes.forEach(classItem => {
-            const classCard = document.createElement('div');
-            classCard.className = 'class-card';
-            classCard.style.backgroundColor = classItem.color;
-            
-            const cardContent = document.createElement('div');
-            cardContent.className = 'card-content';
-            cardContent.textContent = classItem.name;
-            
-            const burgerDots = document.createElement('div');
-            burgerDots.className = 'burger-dots';
-            burgerDots.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showBurgerMenu(e, classItem.id, 'class');
-            });
-            
-            classCard.appendChild(cardContent);
-            classCard.appendChild(burgerDots);
+            const classCard = createClassCard(classItem);
             classesContainer.appendChild(classCard);
 
             [assignClassSelect, document.getElementById('editAssignClass')].forEach(select => {
@@ -101,61 +138,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    function updateTestsDisplay() {
-        testsContainer.innerHTML = '';
-        tests.forEach(test => {
-            const testCard = document.createElement('div');
-            testCard.className = 'test-card';
-            const classItem = classes.find(c => c.id === test.assignedClassId);
-            testCard.style.backgroundColor = classItem ? classItem.color : '#999';
-            
-            const cardContent = document.createElement('div');
-            cardContent.className = 'card-content';
-            cardContent.innerHTML = `
-                <h3>${test.name}</h3>
-                <p>Type: ${test.type}</p>
-                <p>Class: ${classItem ? classItem.name : 'Unknown'}</p>
-                <p>Deadline: ${new Date(test.deadline).toLocaleDateString()}</p>
-                <p>Duration: ${test.timeAllocation} minutes</p>
-            `;
-            
-            const burgerDots = document.createElement('div');
-            burgerDots.className = 'burger-dots';
-            burgerDots.addEventListener('click', (e) => {
-                e.stopPropagation();
-                showBurgerMenu(e, test.id, 'test');
-            });
-            
-            testCard.appendChild(cardContent);
-            testCard.appendChild(burgerDots);
-            
-            testCard.addEventListener('click', (e) => {
-                if (!e.target.classList.contains('burger-dots')) {
-                    window.location.href = `test.html?id=${test.id}`;
-                }
-            });
-            
-            testsContainer.appendChild(testCard);
-        });
-    }
-
-    function showBurgerMenu(e, id, type) {
-        e.preventDefault();
-        const menu = type === 'class' ? classContextMenu : testContextMenu;
-        
-        document.querySelectorAll('.burger-menu').forEach(m => m.classList.remove('show'));
-        
-        if (type === 'class') {
-            currentClassId = id;
-        } else {
-            currentTestId = id;
-        }
-        
-        menu.style.left = `${e.pageX}px`;
-        menu.style.top = `${e.pageY}px`;
-        menu.classList.add('show');
-    }
-
     function editClass(classId) {
         const classItem = classes.find(c => c.id === classId);
         if (classItem) {
@@ -165,42 +147,70 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function editTest(testId) {
-        const test = tests.find(t => t.id === testId);
-        if (!test) return;
 
-        document.getElementById('editTestName').value = test.name;
-        document.getElementById('editTimeAllocation').value = test.timeAllocation;
-        document.getElementById('editTestType').value = test.type;
-        document.getElementById('editTestDeadline').value = test.deadline;
-        document.getElementById('editAssignClass').value = test.assignedClassId;
-        document.getElementById('editTestInstructions').value = test.instructions;
-        document.getElementById('editTestId').value = testId;
-
-        editTestModal.classList.add('show');
+    function createTestCard(test) {
+        const testCard = document.createElement('div');
+        testCard.className = 'test-card';
+        const classItem = classes.find(c => c.id === test.assignedClassId);
+        testCard.style.backgroundColor = classItem ? classItem.color : '#999';
+        
+        const cardContent = document.createElement('div');
+        cardContent.innerHTML = `
+            <h3>${test.name}</h3>
+            <p>Type: ${test.type}</p>
+            <p>Class: ${classItem ? classItem.name : 'Unknown'}</p>
+            <p>Deadline: ${new Date(test.deadline).toLocaleDateString()}</p>
+            <p>Duration: ${test.timeAllocation} minutes</p>
+        `;
+        
+        const cardActions = document.createElement('div');
+        cardActions.className = 'card-actions';
+        
+        const editBtn = document.createElement('button');
+        editBtn.className = 'action-btn edit-btn';
+        editBtn.innerHTML = '✏️';
+        editBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            editTest(test.id);
+        });
+        
+        const deleteBtn = document.createElement('button');
+        deleteBtn.className = 'action-btn delete-btn';
+        deleteBtn.innerHTML = '🗑️';
+        deleteBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            tests = tests.filter(t => t.id !== test.id);
+            localStorage.setItem('tests', JSON.stringify(tests));
+            updateTestsDisplay();
+        });
+        
+        cardActions.appendChild(editBtn);
+        cardActions.appendChild(deleteBtn);
+        
+        testCard.appendChild(cardContent);
+        testCard.appendChild(cardActions);
+        
+        testCard.addEventListener('click', (e) => {
+            if (!e.target.closest('.action-btn')) {
+                window.location.href = `test.html?id=${test.id}`;
+            }
+        });
+        
+        return testCard;
     }
-
-    addClassButton.addEventListener('click', () => {
-        classModal.classList.add('show');
-    });
-
-    addTestButton.addEventListener('click', () => {
-        if (classes.length === 0) {
-            showError('You need to create at least one class before creating a test.');
-            return;
-        }
-        testModal.classList.add('show');
-    });
+    
+    function updateTestsDisplay() {
+        testsContainer.innerHTML = '';
+        tests.forEach(test => {
+            const testCard = createTestCard(test);
+            testsContainer.appendChild(testCard);
+        });
+    }
 
     classForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const className = document.getElementById('className').value.trim();
         
-        if (className.length === 0) {
-            showError('Class name cannot be empty.');
-            return;
-        }
-
         if (classes.some(c => c.name === className)) {
             showError('A class with this name already exists.');
             return;
@@ -223,11 +233,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const className = document.getElementById('editClassName').value.trim();
         const classId = document.getElementById('editClassId').value;
         
-        if (className.length === 0) {
-            showError('Class name cannot be empty.');
-            return;
-        }
-
         if (classes.some(c => c.name === className && c.id !== classId)) {
             showError('A class with this name already exists.');
             return;
@@ -238,11 +243,23 @@ document.addEventListener('DOMContentLoaded', function() {
             classes[classIndex].name = className;
             localStorage.setItem('classes', JSON.stringify(classes));
             updateClassesDisplay();
-            updateTestsDisplay();
             editClassModal.classList.remove('show');
             editClassForm.reset();
         }
     });
+
+    addClassButton.addEventListener('click', () => {
+        classModal.classList.add('show');
+    });
+
+    addTestButton.addEventListener('click', () => {
+        if (classes.length === 0) {
+            showError('You need to create at least one class before creating a test.');
+            return;
+        }
+        testModal.classList.add('show');
+    });
+
 
     testForm.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -253,23 +270,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const deadline = document.getElementById('testDeadline').value;
         const assignedClassId = document.getElementById('assignClass').value;
         const instructions = document.getElementById('testInstructions').value.trim();
-
-        if (name.length === 0) {
-            showError('Test name cannot be empty.');
-            return;
-        }
-
-        if (!timeAllocation || timeAllocation < 60) {
-            showError('Time allocation must be at least 60 minutes.');
-            return;
-        }
-
-        const dateError = validateDate(deadline);
-        if (dateError) {
-            showError(dateError);
-            return;
-        }
-
+    
         const newTest = {
             id: generateUniqueId(),
             name,
@@ -280,19 +281,19 @@ document.addEventListener('DOMContentLoaded', function() {
             instructions,
             questions: []
         };
-
+    
         tests.push(newTest);
         localStorage.setItem('tests', JSON.stringify(tests));
         window.location.href = `test.html?id=${newTest.id}`;
     });
-
+    
     editTestForm.addEventListener('submit', (e) => {
         e.preventDefault();
         const testId = document.getElementById('editTestId').value;
         const testIndex = tests.findIndex(t => t.id === testId);
         
         if (testIndex === -1) return;
-
+    
         const updatedTest = {
             ...tests[testIndex],
             name: document.getElementById('editTestName').value.trim(),
@@ -302,59 +303,27 @@ document.addEventListener('DOMContentLoaded', function() {
             assignedClassId: document.getElementById('editAssignClass').value,
             instructions: document.getElementById('editTestInstructions').value.trim()
         };
-
-        const dateError = validateDate(updatedTest.deadline);
-        if (dateError) {
-            showError(dateError);
-            return;
-        }
-
-        if (!updatedTest.timeAllocation || updatedTest.timeAllocation < 60) {
-            showError('Time allocation must be at least 60 minutes.');
-            return;
-        }
-
+    
         tests[testIndex] = updatedTest;
         localStorage.setItem('tests', JSON.stringify(tests));
         editTestModal.classList.remove('show');
         updateTestsDisplay();
     });
-
-    classContextMenu.addEventListener('click', (e) => {
-        const action = e.target.dataset.action;
-        if (action === 'edit') {
-            editClass(currentClassId);
-        } else if (action === 'delete') {
-            if (tests.some(t => t.assignedClassId === currentClassId)) {
-                showError('Cannot delete class that has tests assigned to it.');
-            } else {
-                classes = classes.filter(c => c.id !== currentClassId);
-                localStorage.setItem('classes', JSON.stringify(classes));
-                updateClassesDisplay();
-            }
-        }
-        classContextMenu.classList.remove('show');
-    });
-
-    testContextMenu.addEventListener('click', (e) => {
-        const action = e.target.dataset.action;
-        if (action === 'edit') {
-            editTest(currentTestId);
-        } else if (action === 'delete') {
-            tests = tests.filter(t => t.id !== currentTestId);
-            localStorage.setItem('tests', JSON.stringify(tests));
-            updateTestsDisplay();
-        }
-        testContextMenu.classList.remove('show');
-    });
-
-    document.addEventListener('click', (e) => {
-        if (!e.target.closest('.burger-menu') && !e.target.closest('.burger-dots')) {
-            document.querySelectorAll('.burger-menu').forEach(menu => {
-                menu.classList.remove('show');
-            });
-        }
-    });
+    
+    function editTest(testId) {
+        const test = tests.find(t => t.id === testId);
+        if (!test) return;
+    
+        document.getElementById('editTestName').value = test.name;
+        document.getElementById('editTimeAllocation').value = test.timeAllocation;
+        document.getElementById('editTestType').value = test.type;
+        document.getElementById('editTestDeadline').value = test.deadline;
+        document.getElementById('editAssignClass').value = test.assignedClassId;
+        document.getElementById('editTestInstructions').value = test.instructions;
+        document.getElementById('editTestId').value = testId;
+    
+        editTestModal.classList.add('show');
+    }
 
     document.querySelectorAll('.cancel-button').forEach(button => {
         button.addEventListener('click', (e) => {
@@ -365,8 +334,21 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    document.querySelector('.done-button').addEventListener('click', () => {
+        credentialsModal.classList.remove('show');
+    });
+
     document.querySelector('.ok-button').addEventListener('click', () => {
         errorModal.classList.remove('show');
+    });
+
+    document.querySelectorAll('.copy-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.dataset.target;
+            const input = document.getElementById(targetId);
+            input.select();
+            document.execCommand('copy');
+        });
     });
 
     gradesNav.addEventListener('click', function(e) {
@@ -385,11 +367,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     const testDeadline = document.getElementById('testDeadline');
-    const editTestDeadline = document.getElementById('editTestDeadline');
-    [testDeadline, editTestDeadline].forEach(input => {
-        input.min = new Date().toISOString().split('T')[0];
-        input.max = '2026-12-31';
-    });
+    testDeadline.min = new Date().toISOString().split('T')[0];
+    testDeadline.max = '2026-12-31';
 
     updateClassesDisplay();
     updateTestsDisplay();

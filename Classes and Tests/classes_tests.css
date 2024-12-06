@@ -49,92 +49,6 @@ html, body {
     max-width: calc(100vw - 337px);
 }
 
-.user-section {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 0 24px;
-    margin-bottom: 32px;
-    color: white;
-}
-
-.user-name {
-    font-size: 24px;
-}
-
-.nav-menu {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-}
-
-.nav-item {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 24px;
-    color: white;
-    cursor: pointer;
-    font-size: 24px;
-    position: relative;
-}
-
-.nav-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
-.nav-item a {
-    color: white;
-    text-decoration: none;
-    flex-grow: 1;
-}
-
-.nav-item.active {
-    background-color: rgba(255, 255, 255, 0.2);
-}
-
-.nav-item.active::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 4px;
-    background-color: white;
-}
-
-.dropdown-arrow {
-    margin-left: auto;
-    transform: scaleY(0.5);
-    transition: transform 0.2s ease;
-    font-size: 12px;
-}
-
-.grades-dropdown {
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    background-color: #E48343;
-    display: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.grades-dropdown.show {
-    display: block;
-}
-
-.grades-dropdown-item {
-    display: block;
-    padding: 12px 24px 12px 60px;
-    color: white;
-    text-decoration: none;
-}
-
-.grades-dropdown-item:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-}
-
 .content-section {
     background-color: white;
     padding: 24px;
@@ -163,75 +77,46 @@ html, body {
     min-width: 150px;
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
+    align-items: center;
     cursor: pointer;
-    transition: transform 0.2s;
 }
 
 .test-card {
-    position: relative;
     width: 100%;
     padding: 20px;
     border-radius: 4px;
     color: white;
-    cursor: pointer;
-    transition: transform 0.2s;
-}
-
-.class-card:hover,
-.test-card:hover {
-    transform: translateY(-2px);
+    margin-bottom: 12px;
 }
 
 .card-content {
     flex-grow: 1;
+    margin-right: 16px;
 }
 
-.burger-dots {
-    width: 24px;
-    height: 24px;
-    cursor: pointer;
+.card-actions {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    gap: 8px;
+}
+
+.action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px;
     background-color: rgba(255, 255, 255, 0.1);
     border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
     transition: background-color 0.2s;
-    z-index: 2;
 }
 
-.burger-dots:hover {
+.action-btn:hover {
     background-color: rgba(255, 255, 255, 0.2);
-}
-
-.burger-dots::before {
-    content: '⋮';
-    color: white;
-    font-size: 20px;
-}
-
-.burger-menu {
-    display: none;
-    position: fixed;
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    min-width: 120px;
-}
-
-.burger-menu.show {
-    display: block;
-}
-
-.burger-menu-item {
-    padding: 8px 16px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.burger-menu-item:hover {
-    background-color: #f5f5f5;
 }
 
 .add-button {
@@ -242,11 +127,6 @@ html, body {
     border-radius: 4px;
     font-size: 32px;
     cursor: pointer;
-    transition: background-color 0.2s;
-}
-
-.add-button:hover {
-    background-color: #9BC49B;
 }
 
 .button-label {
@@ -310,13 +190,13 @@ html, body {
 
 .save-button,
 .cancel-button,
-.ok-button {
+.ok-button,
+.done-button {
     padding: 12px 24px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.2s;
 }
 
 .save-button {
@@ -324,17 +204,20 @@ html, body {
     color: white;
 }
 
-.save-button:hover {
-    background-color: #45a049;
-}
-
 .cancel-button {
     background-color: #f44336;
     color: white;
 }
 
-.cancel-button:hover {
-    background-color: #da190b;
+.done-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.ok-button {
+    background-color: #4CAF50;
+    color: white;
+    min-width: 100px;
 }
 
 .error-modal {
@@ -345,6 +228,114 @@ html, body {
 .error-modal p {
     margin: 20px 0;
     color: #f44336;
+}
+
+.credentials-group {
+    margin-bottom: 20px;
+}
+
+.copy-field {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.copy-field input {
+    flex-grow: 1;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+}
+
+.copy-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 20px;
+    padding: 4px 8px;
+    background-color: #f5f5f5;
+    border-radius: 4px;
+}
+
+.copy-button:hover {
+    background-color: #e0e0e0;
+}
+
+.user-section {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 24px;
+    margin-bottom: 32px;
+    color: white;
+}
+
+.nav-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 24px;
+    color: white;
+    cursor: pointer;
+    font-size: 24px;
+    position: relative;
+}
+
+.nav-item a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: white;
+}
+
+.dropdown-arrow {
+    margin-left: auto;
+    transform: scaleY(0.5);
+    transition: transform 0.2s ease;
+}
+
+.grades-dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: #E48343;
+    display: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grades-dropdown.show {
+    display: block;
+}
+
+.grades-dropdown-item {
+    display: block;
+    padding: 12px 24px 12px 60px;
+    color: white;
+    text-decoration: none;
+}
+
+.grades-dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 .back-button {
@@ -372,14 +363,4 @@ html, body {
 
 .back-icon {
     font-size: 28px;
-}
-
-.test-card h3 {
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-
-.test-card p {
-    margin: 4px 0;
-    font-size: 16px;
 }

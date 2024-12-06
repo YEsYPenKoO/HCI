@@ -61,7 +61,6 @@
         </main>
     </div>
 
-    <!-- New Class Modal -->
     <div class="modal" id="newClassModal">
         <div class="modal-content">
             <h2>New Class</h2>
@@ -78,7 +77,6 @@
         </div>
     </div>
 
-    <!-- Edit Class Modal -->
     <div class="modal" id="editClassModal">
         <div class="modal-content">
             <h2>Edit Class</h2>
@@ -96,7 +94,6 @@
         </div>
     </div>
 
-    <!-- New Test Modal -->
     <div class="modal" id="newTestModal">
         <div class="modal-content">
             <h2>New Test</h2>
@@ -142,7 +139,6 @@
         </div>
     </div>
 
-    <!-- Edit Test Modal -->
     <div class="modal" id="editTestModal">
         <div class="modal-content">
             <h2>Edit Test</h2>
@@ -190,24 +186,35 @@
         </div>
     </div>
 
-    <!-- Burger Menus -->
-    <div class="burger-menu" id="classContextMenu">
-        <div class="burger-menu-item" data-action="edit">Edit</div>
-        <div class="burger-menu-item" data-action="delete">Delete</div>
-    </div>
-
-    <div class="burger-menu" id="testContextMenu">
-        <div class="burger-menu-item" data-action="edit">Edit</div>
-        <div class="burger-menu-item" data-action="delete">Delete</div>
-    </div>
-
-    <!-- Error Modal -->
     <div class="modal" id="errorModal">
         <div class="modal-content error-modal">
             <h2>Error</h2>
             <p id="errorMessage"></p>
             <div class="modal-buttons">
                 <button class="ok-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="credentialsModal">
+        <div class="modal-content">
+            <h2>Student Credentials</h2>
+            <div class="credentials-group">
+                <label>Student Number</label>
+                <div class="copy-field">
+                    <input type="text" id="studentNumber" readonly>
+                    <button class="copy-button" data-target="studentNumber">📋</button>
+                </div>
+            </div>
+            <div class="credentials-group">
+                <label>Password</label>
+                <div class="copy-field">
+                    <input type="text" id="studentPassword" readonly>
+                    <button class="copy-button" data-target="studentPassword">📋</button>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="done-button">Done</button>
             </div>
         </div>
     </div>
