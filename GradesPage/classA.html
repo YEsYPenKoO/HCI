@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class A Grades - Fakeboard™</title>
+    <link rel="stylesheet" href="grades.css">
+    <script src="grades.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="user-section">
+                <div class="user-icon">👤</div>
+                <span class="user-name">James Fairfield</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item" data-page="calendar">
+                    <div class="nav-icon">📅</div>
+                    <a href="../Teacher/main_teacher.html">Calendar</a>
+                </div>
+                
+                <div class="nav-item" data-page="courses">
+                    <div class="nav-icon">📚</div>
+                    <a href="../Classes and Tests/classes_tests.html">Classes and Tests</a>
+                </div>
+                
+                <div class="nav-item active" data-page="grades">
+                    <div class="nav-icon">📊</div>
+                    <a href="#grades">Grades</a>
+                    <span class="dropdown-arrow">▼</span>
+                    <div class="grades-dropdown">
+                        <a href="../GradesPage/classA.html" class="grades-dropdown-item">Class A</a>
+                        <a href="../GradesPage/classB.html" class="grades-dropdown-item">Class B</a>
+                    </div>
+                </div>
+            </nav>
+
+            <div class="back-button">
+                <a href="../Starting Page/welcome.html">
+                    <div class="back-icon">←</div>
+                    <span>Back to Starting Page</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <h1>Class A</h1>
+            <div class="content-section">
+                <h2>Exams</h2>
+                <div class="grades-table">
+                    <div class="table-header">
+                        <span class="test-name">Exam</span>
+                        <span class="grade">Average grade</span>
+                    </div>
+                    <div class="table-row clickable">
+                        <span class="test-name">Exam 1: Complex devision</span>
+                        <span class="grade">79.89 %</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section">
+                <h2>Homework</h2>
+                <div class="grades-table">
+                    <div class="table-header">
+                        <span class="test-name">Homework</span>
+                        <span class="grade">Average grade</span>
+                    </div>
+                    <div class="table-row clickable">
+                        <span class="test-name">Week 1: Introduction to Complex Numbers and Division</span>
+                        <span class="grade">91.25 %</span>
+                    </div>
+                    <div class="table-row clickable">
+                        <span class="test-name">Week 2: Advanced Algebraic Expressions and Equations</span>
+                        <span class="grade">86.72 %</span>
+                    </div>
+                    <div class="table-row clickable">
+                        <span class="test-name">Week 3: Basic Geometric Constructions and Tools</span>
+                        <span class="grade">87.93 %</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
