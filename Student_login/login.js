@@ -2,14 +2,10 @@ function login() {
     var studentId = document.getElementById("studentidtextbox").value;
     var password = document.getElementById("passwordtextbox").value;
 
-    // Fetch student data from local storage or a database
-    var students = JSON.parse(localStorage.getItem('students')) || [];
-    var currentStudent = students.find(s => s.id === studentId && s.password === password);
-
-    if (currentStudent) {
+    if (studentId === "100413108" && password === "Tarelka71177") {
         console.log("Login Success");
         document.getElementById("result").innerHTML = "Login Success!";
-        window.location.replace("../Student/student-dashboard.html");
+        window.location.replace("../Student/main_student.html");
     } else {
         console.log("Login Failure");
         document.getElementById("result").innerHTML = "Incorrect Student ID or Password. Please try again.";
