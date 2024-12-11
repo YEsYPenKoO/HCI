@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam 2: Test Exam - Fakeboard™</title>
+    <link rel="stylesheet" href="realExam.css">
+    <script src="realExam.js" defer></script>
+</head>
+<body>
+    <div class="top-bar">
+        <a href="../GradesPage/classA.html" class="back-link">
+            <span class="back-icon">←</span> Back to Grades
+        </a>
+    </div>
+    <div class="exam-header">
+        <div class="exam-info">
+            <h1>Exam 2: Test Exam</h1>
+            <div class="stats">
+                <span id="totalPercent">Average score: ?%</span>
+                <span>Average time: 4 min</span>
+                <span>Students: 3/38</span>
+            </div>
+        </div>
+        <div class="sort-control">
+            <label>Sort by</label>
+            <select id="sortType">
+                <option value="default">Default</option>
+                <option value="high">High %</option>
+                <option value="low">Low %</option>
+                
+            </select>
+        </div>
+    </div>
+    <div class="questions-container">
+        <div class="question">
+            <div class="question-content">
+                <div class="question-header">
+                    <h3>Question 1:</h3>
+                    <span class="correct-percentage" id="percent1">?%</span>
+                </div>
+                <p>Test Question 1</p>
+                <div class="options">
+                    <div class="option" id="q1-1">This is my answer!</div>
+                    <div class="option" id="q1-2">Testing, testing!</div>
+                    <div class="option" id="q1-3">Do I get extra marks for this?</div>
+                </div>
+            </div>
+            <div class="graph-container">
+                <canvas class="answer-graph" data-answers="84,5,5,3,3" data-correct="0"></canvas>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-content">
+                <div class="question-header">
+                    <h3>Question 2:</h3>
+                    <span class="correct-percentage">92%</span>
+                </div>
+                <p>Test Question 2</p>
+                <div class="options">
+                    <div class="option" data-correct="true">A1</div>
+                    <div class="option">A2</div>
+                </div>
+            </div>
+            <div class="graph-container">
+                <canvas class="answer-graph" data-answers="2,2,2,92,2" data-correct="3"></canvas>
+            </div>
+        </div>
+
+        <div class="question">
+            <div class="question-content">
+                <div class="question-header">
+                    <h3>Question 3:</h3>
+                    <span class="correct-percentage">78%</span>
+                </div>
+                <p>Test Question 3</p>
+                <div class="options">
+                    <div class="option">A1</div>
+                    <div class="option" data-correct="true">A2</div>
+                    <div class="option" data-correct="true">A3</div>
+                </div>
+            </div>
+            <div class="graph-container">
+                <canvas class="answer-graph" data-answers="5,78,5,5,7" data-correct="1"></canvas>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

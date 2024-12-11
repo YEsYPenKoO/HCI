@@ -156,6 +156,13 @@ document.addEventListener('DOMContentLoaded', function() {
         questionDiv.appendChild(header);
         questionDiv.appendChild(textInput);
         questionDiv.appendChild(content);
+        if (question.type == 'open') {
+            const answerInput = document.createElement('input');
+            answerInput.type = 'text';
+            answerInput.className = 'question-text';
+            answerInput.placeholder = 'Answer goes here';
+            questionDiv.appendChild(answerInput);
+        }
 
         const burgerDots = questionDiv.querySelector('.burger-dots');
         const burgerDropdown = questionDiv.querySelector('.burger-dropdown');
@@ -222,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const index = tests.findIndex(t => t.id === testId);
         if (index !== -1) {
             tests[index] = test;
-            localStorage.setItem('tests', JSON.stringify(tests));
+            localStorage.setItem('answers', JSON.stringify(tests));
         }
     }
 

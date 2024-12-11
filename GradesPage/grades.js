@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', function() {
     `
         <div class="table-row clickable">
             <span class="test-name">Exam 2: Test Exam</span>
-            <span class="grade">88.9%</span>
+            <span class="grade">?%</span>
         </div>
     `;
     gradesTable.appendChild(newExam);
