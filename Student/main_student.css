@@ -47,19 +47,6 @@ html, body {
     max-width: calc(100vw - 337px);
 }
 
-.deadlines-section,
-.notifications-section {
-    display: flex;
-    flex-direction: column;
-}
-
-.section-title {
-    font-size: 24px;
-    margin-bottom: 16px;
-    color: #000;
-    font-family: 'Winthorpe Rg', sans-serif;
-}
-
 .deadlines-section {
     flex: 1;
     max-width: 654px;
