@@ -109,6 +109,13 @@ html, body {
     font-family: 'Winthorpe Rg', sans-serif;
 }
 
+.section-title {
+    font-size: 24px;
+    margin-bottom: 16px;
+    color: #000;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
 .month-header {
     background-color: #E9C655;
     padding: 16px;
@@ -151,6 +158,87 @@ html, body {
     font-family: 'Winthorpe Rg', sans-serif;
 }
 
+.dropdown-arrow {
+    margin-left: auto;
+    transform: scaleY(0.5);
+    transition: transform 0.2s ease;
+    font-size: 12px;
+}
+
+.grades-dropdown {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: #E48343;
+    display: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.grades-dropdown.show {
+    display: block;
+}
+
+.grades-dropdown-item {
+    display: block;
+    padding: 12px 24px 12px 60px;
+    color: white;
+    font-size: 20px;
+    text-decoration: none;
+    font-family: 'Winthorpe Rg', sans-serif;
+}
+
+.grades-dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: white;
+}
+
+.nav-item.active .dropdown-arrow {
+    transform: scaleY(-0.5);
+}
+
+.nav-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-item.active:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.deadlines-container::-webkit-scrollbar,
+.notifications-container::-webkit-scrollbar {
+    width: 10px;
+}
+
+.deadlines-container::-webkit-scrollbar-track,
+.notifications-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.deadlines-container::-webkit-scrollbar-thumb,
+.notifications-container::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+.deadlines-container::-webkit-scrollbar-thumb:hover,
+.notifications-container::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
 .nav-icon {
     display: flex;
     align-items: center;
@@ -167,6 +255,7 @@ html, body {
 .notification-content {
     flex: 1;
 }
+
 
 .back-button {
     position: absolute;
@@ -185,7 +274,7 @@ html, body {
     font-family: 'Winthorpe Rg', sans-serif;
     font-size: 24px;
     padding: 12px;
-    transition: background-color 0.2s;
+    transition: background-color 0.2s ease;
 }
 
 .back-button a:hover {

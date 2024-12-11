@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tests And Grades - Fakeboard™</title>
+    <link rel="stylesheet" href="tests_grades.css">
+    <script src="tests_grades.js" defer></script>
+</head>
+<body>
+    <div class="app-container">
+        <aside class="sidebar">
+            <div class="user-section">
+                <div class="user-icon">👤</div>
+                <span class="user-name">Haley Smith</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-item" data-page="calendar">
+                    <div class="nav-icon">📅</div>
+                    <a href="../Student/main_student.html">Calendar</a>
+                </div>
+                
+                <div class="nav-item active" data-page="courses">
+                    <div class="nav-icon">📚</div>
+                    <a href="../Tests_And_Grades/tests_grades.html">Tests and Grades</a>
+                </div>
+                
+                <div class="nav-item" data-page="grades">
+                    <!-- This is still needed to display -->
+                </div>
+            </nav>
+            <div class="back-button">
+                <a href="../Starting Page/welcome.html">
+                    <div class="back-icon">←</div>
+                    <span>Back to Starting Page</span>
+                </a>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <!-- <div class="content-section"> -->
+                <!-- <h2>Classes</h2> -->
+                <!-- <div class="classes-container" id="classesContainer"></div> -->
+                <!-- <button class="add-button" id="addClassButton">+</button> -->
+                <!-- <div class="button-label">Create a new Class</div> -->
+            <!-- </div> -->
+
+            <div class="content-section">
+                <h2>Tests</h2>
+                <div class="tests-container" id="testsContainer"></div>
+                <!-- <button class="add-button" id="addTestButton">+</button> -->
+                <!-- <div class="button-label">Create a new test</div> -->
+            </div>
+        </main>
+    </div>
+
+    <div class="modal" id="newClassModal">
+        <div class="modal-content">
+            <h2>New Class</h2>
+            <form id="newClassForm">
+                <div class="form-group">
+                    <label>Class Name</label>
+                    <input type="text" id="className" required>
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="save-button">Save</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="editClassModal">
+        <div class="modal-content">
+            <h2>Edit Class</h2>
+            <form id="editClassForm">
+                <div class="form-group">
+                    <label>Class Name</label>
+                    <input type="text" id="editClassName" required>
+                    <input type="hidden" id="editClassId">
+                </div>
+                <div class="modal-buttons">
+                    <button type="submit" class="save-button">Save</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="newTestModal">
+        <div class="modal-content">
+            <h2>New Test</h2>
+            <form id="newTestForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="testName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Time allocation (in minutes, minimum 60)</label>
+                    <input type="number" id="timeAllocation" min="60" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Choose a type</label>
+                    <select id="testType" required>
+                        <option value="homework">Homework</option>
+                        <option value="exam">Exam</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Deadline</label>
+                    <input type="date" id="testDeadline" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Assign to a class</label>
+                    <select id="assignClass" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label>Instructions</label>
+                    <textarea id="testInstructions" rows="4" placeholder="Write here"></textarea>
+                </div>
+
+                <div class="modal-buttons">
+                    <button type="submit" class="save-button">Save and Open</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="editTestModal">
+        <div class="modal-content">
+            <h2>Edit Test</h2>
+            <form id="editTestForm">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" id="editTestName" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Time allocation (in minutes, minimum 60)</label>
+                    <input type="number" id="editTimeAllocation" min="60" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Choose a type</label>
+                    <select id="editTestType" required>
+                        <option value="homework">Homework</option>
+                        <option value="exam">Exam</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Deadline</label>
+                    <input type="date" id="editTestDeadline" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Assign to a class</label>
+                    <select id="editAssignClass" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label>Instructions</label>
+                    <textarea id="editTestInstructions" rows="4" placeholder="Write here"></textarea>
+                </div>
+
+                <input type="hidden" id="editTestId">
+
+                <div class="modal-buttons">
+                    <button type="submit" class="save-button">Save Changes</button>
+                    <button type="button" class="cancel-button">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal" id="errorModal">
+        <div class="modal-content error-modal">
+            <h2>Error</h2>
+            <p id="errorMessage"></p>
+            <div class="modal-buttons">
+                <button class="ok-button">OK</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="credentialsModal">
+        <div class="modal-content">
+            <h2>Share these with a student</h2>
+            <div class="credentials-group">
+                <label>Student Number</label>
+                <div class="copy-field">
+                    <input type="text" id="studentNumber" readonly>
+                    <button class="copy-button" data-target="studentNumber">📋</button>
+                </div>
+            </div>
+            <div class="credentials-group">
+                <label>Password</label>
+                <div class="copy-field">
+                    <input type="text" id="studentPassword" readonly>
+                    <button class="copy-button" data-target="studentPassword">📋</button>
+                </div>
+            </div>
+            <div class="modal-buttons">
+                <button class="done-button">Done</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

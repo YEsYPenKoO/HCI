@@ -56,4 +56,13 @@ document.addEventListener('DOMContentLoaded', function() {
     backButton.addEventListener('mouseleave', () => {
         backButton.style.backgroundColor = 'transparent';
     });
+    const newExam = document.createElement('div');
+    newExam.innerHTML =
+    `
+        <div class="table-row clickable">
+            <span class="test-name">Exam 2: Test Exam</span>
+            <span class="grade">88.9%</span>
+        </div>
+    `;
+    gradesTable.appendChild(newExam);
 });
