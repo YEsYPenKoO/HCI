@@ -10,7 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-    
+    this.getElementsByClassName("onClickLink").addEventListener('click', () => {
+            console.log("work");
+            window.location.href = '../Test_And_Grades/tests_grades.html';
+    });
     navItems.forEach(item => {
         item.addEventListener('mouseenter', () => {
             if (!item.classList.contains('active')) {

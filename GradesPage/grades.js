@@ -18,6 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    const newExam = document.createElement('div');
+    newExam.innerHTML =
+    `
+        <div class="table-row clickable">
+            <span class="test-name">Exam 2: Test Exam</span>
+            <span class="grade">?%</span>
+        </div>
+    `;
+    gradesTable.appendChild(newExam);
+
     const clickableRows = document.querySelectorAll('.table-row.clickable');
     clickableRows.forEach(row => {
         row.addEventListener('click', () => {
@@ -30,6 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 window.location.href = '../TestsGrades/week3.html';
             } else if (testName.includes('Exam 1')) {
                 window.location.href = '../TestsGrades/exam1.html';
+            } else if (testName.includes('Exam 2')) {
+                window.location.href = '../TestsGrades/realExam.html';
             }
         });
     });
@@ -56,13 +68,5 @@ document.addEventListener('DOMContentLoaded', function() {
     backButton.addEventListener('mouseleave', () => {
         backButton.style.backgroundColor = 'transparent';
     });
-    const newExam = document.createElement('div');
-    newExam.innerHTML =
-    `
-        <div class="table-row clickable">
-            <span class="test-name">Exam 2: Test Exam</span>
-            <span class="grade">?%</span>
-        </div>
-    `;
-    gradesTable.appendChild(newExam);
+
 });
